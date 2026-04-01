@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
+    --border: 0 0% 12%;
+    --ring: 180 100% 50%; /* Cyan 00F5FF */
+  }
+
+  body {
+    @apply bg-background text-foreground tracking-wide font-sans;
+    background-color: #000;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight italic font-bold;
+  }
+}
+
+@layer components {
+  /* Liquid Glass Morphism Utilities */
+  .glass {
+    @apply bg-glass backdrop-blur-md border border-glass-border shadow-glass rounded-2xl;
+  }
+  
+  .glass-strong {
+    @apply bg-glass-dark backdrop-blur-xl border border-glass-border shadow-glow rounded-3xl;
+  }
+
+  .glass-pill {
+    @apply bg-glass backdrop-blur-lg border border-glass-border shadow-glass rounded-full px-6 py-2 transition-all duration-300;
+  }
+  
+  .glass-pill:hover {
+    @apply bg-[rgba(255,255,255,0.08)] border-[#00F5FF] shadow-[0_0_15px_rgba(0,245,255,0.3)];
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#00F5FF] via-[#8A2BE2] to-[#FF7A00];
+  }
+}
+
+/* Hide scrollbar for cleaner look */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 245, 255, 0.5);
+}

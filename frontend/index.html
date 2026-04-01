@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-Powered Smart Supply Chain Risk Predictor & Optimizer — Real-time demand prediction, supplier risk clustering, route optimization, and disruption intelligence powered by Supervised Learning, Unsupervised Learning, and RAG.">
+    <meta name="keywords" content="supply chain, AI, machine learning, risk prediction, demand forecast, route optimization">
+    <meta name="author" content="SupplyChain AI">
+    <meta name="theme-color" content="#0a0e1a">
+    <title>SupplyChain AI — Smart Risk Predictor & Optimizer</title>
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+
+    <!-- Leaflet.js -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--            SCROLLYTELLING LANDING PAGE                 -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <div id="landing-page" class="landing-page">
+
+        <!-- Animated Background -->
+        <div class="hero-bg">
+            <div class="particle-field" id="particle-field"></div>
+            <div class="grid-overlay"></div>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero-section scroll-section" id="hero">
+            <div class="hero-content">
+                <div class="hero-badge">⚡ AI-Powered Intelligence</div>
+                <h1 class="hero-title">
+                    <span class="hero-line line-1">Smart Supply Chain</span>
+                    <span class="hero-line line-2">Risk Predictor</span>
+                    <span class="hero-line line-3">&amp; <span class="gradient-text">Optimizer</span></span>
+                </h1>
+                <p class="hero-description">
+                    Harness the power of <strong>Supervised Learning</strong>, <strong>Unsupervised Learning</strong>,
+                    and <strong>RAG Intelligence</strong> to predict disruptions, optimize routes, and make
+                    data-driven decisions in real time.
+                </p>
+                <div class="hero-cta">
+                    <button class="btn-primary" onclick="scrollToSection('features-section')">
+                        Explore Features
+                        <span class="btn-arrow">→</span>
+                    </button>
+                    <button class="btn-secondary" onclick="enterDashboard()">
+                        Launch Dashboard
+                        <span class="btn-icon">📊</span>
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat"><span class="stat-number" data-target="365">0</span><span class="stat-label">Days of Data</span></div>
+                    <div class="hero-stat"><span class="stat-number" data-target="20">0</span><span class="stat-label">Suppliers Tracked</span></div>
+                    <div class="hero-stat"><span class="stat-number" data-target="10">0</span><span class="stat-label">Warehouses</span></div>
+                    <div class="hero-stat"><span class="stat-number" data-target="23">0</span><span class="stat-label">RAG Documents</span></div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll to explore</span>
+                <div class="scroll-arrow"></div>
+            </div>
+        </section>
+
+        <!-- Feature 1: Demand Prediction -->
+        <section class="feature-section scroll-section" id="features-section">
+            <div class="feature-content">
+                <div class="feature-badge badge-blue">📊 Supervised Learning</div>
+                <h2 class="feature-title">Demand Prediction</h2>
+                <p class="feature-description">
+                    Our Linear Regression model analyzes 365 days of historical demand data with
+                    advanced feature engineering — seasonality, day-of-week patterns, trend analysis,
+                    and rolling averages — to forecast future demand with precision.
+                </p>
+                <div class="feature-highlights">
+                    <div class="highlight"><span class="h-icon">🎯</span> R² Score: 0.41+</div>
+                    <div class="highlight"><span class="h-icon">📈</span> 30-Day Forecasts</div>
+                    <div class="highlight"><span class="h-icon">🔄</span> Auto-Retraining</div>
+                </div>
+            </div>
+            <div class="feature-visual">
+                <div class="mock-chart" id="mock-demand-chart">
+                    <div class="chart-bar" style="--h: 60%; --delay: 0s;"></div>
+                    <div class="chart-bar" style="--h: 75%; --delay: 0.1s;"></div>
+                    <div class="chart-bar" style="--h: 55%; --delay: 0.2s;"></div>
+                    <div class="chart-bar" style="--h: 85%; --delay: 0.3s;"></div>
+                    <div class="chart-bar" style="--h: 70%; --delay: 0.4s;"></div>
+                    <div class="chart-bar" style="--h: 90%; --delay: 0.5s;"></div>
+                    <div class="chart-bar predicted" style="--h: 80%; --delay: 0.6s;"></div>
+                    <div class="chart-bar predicted" style="--h: 88%; --delay: 0.7s;"></div>
+                    <div class="chart-bar predicted" style="--h: 78%; --delay: 0.8s;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature 2: Supplier Clustering -->
+        <section class="feature-section scroll-section" id="cluster-section">
+            <div class="feature-visual">
+                <div class="mock-clusters">
+                    <div class="cluster-group cluster-green" style="--x: 25%; --y: 65%;">
+                        <div class="c-dot"></div><div class="c-dot"></div><div class="c-dot"></div>
+                        <div class="c-dot"></div><div class="c-dot"></div><div class="c-dot"></div><div class="c-dot"></div>
+                        <span class="c-label">Low Risk</span>
+                    </div>
+                    <div class="cluster-group cluster-amber" style="--x: 50%; --y: 45%;">
+                        <div class="c-dot"></div><div class="c-dot"></div><div class="c-dot"></div>
+                        <div class="c-dot"></div><div class="c-dot"></div><div class="c-dot"></div><div class="c-dot"></div>
+                        <span class="c-label">Medium</span>
+                    </div>
+                    <div class="cluster-group cluster-red" style="--x: 75%; --y: 25%;">
+                        <div class="c-dot"></div><div class="c-dot"></div><div class="c-dot"></div>
+                        <div class="c-dot"></div><div class="c-dot"></div><div class="c-dot"></div>
+                        <span class="c-label">High Risk</span>
+                    </div>
+                </div>
+            </div>
+            <div class="feature-content">
+                <div class="feature-badge badge-purple">🏭 Unsupervised Learning</div>
+                <h2 class="feature-title">Supplier Risk Clustering</h2>
+                <p class="feature-description">
+                    K-Means clustering automatically categorizes 20 suppliers into Low, Medium,
+                    and High risk groups using delivery time, failure rate, cost, quality, and
+                    reliability as features. No labeled data needed.
+                </p>
+                <div class="feature-highlights">
+                    <div class="highlight"><span class="h-icon">📊</span> Silhouette: 0.715</div>
+                    <div class="highlight"><span class="h-icon">🎯</span> 3 Risk Clusters</div>
+                    <div class="highlight"><span class="h-icon">🔍</span> 5D Feature Space</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature 3: RAG Intelligence (Upgraded Pipeline) -->
+        <section class="feature-section scroll-section" id="rag-section">
+            <div class="feature-content">
+                <div class="feature-badge badge-green">🤖 RAG Pipeline</div>
+                <h2 class="feature-title">Disruption Intelligence</h2>
+                <p class="feature-description">
+                    A lightweight RAG system optimized for offline execution — TF-IDF with
+                    (1,3)-gram tokenization for semantic phrase matching, BM25 re-ranking for
+                    relevance boosting, and template-based generation with full provenance tracking.
+                </p>
+                <div class="feature-highlights">
+                    <div class="highlight"><span class="h-icon">📚</span> 23 Docs → 50+ Chunks</div>
+                    <div class="highlight"><span class="h-icon">🔍</span> TF-IDF + BM25 Hybrid</div>
+                    <div class="highlight"><span class="h-icon">📊</span> Provenance Tracking</div>
+                </div>
+            </div>
+            <div class="feature-visual">
+                <div class="mock-rag">
+                    <div class="rag-stage"><span class="stage-num">1</span><span class="stage-name">Query Analysis</span></div>
+                    <div class="rag-query">"monsoon impact on supply chain"</div>
+                    <div class="rag-stage"><span class="stage-num">2</span><span class="stage-name">TF-IDF (1,3)-gram Retrieval</span></div>
+                    <div class="rag-docs">
+                        <div class="rag-doc">📄 DOC-001: Monsoon Flooding <span class="rag-score">0.87</span></div>
+                        <div class="rag-doc">📄 DOC-002: Bay of Bengal Cyclone <span class="rag-score">0.64</span></div>
+                        <div class="rag-doc">📄 DOC-011: JNPT Port Congestion <span class="rag-score">0.41</span></div>
+                    </div>
+                    <div class="rag-stage"><span class="stage-num">3</span><span class="stage-name">BM25 Re-Ranking</span></div>
+                    <div class="rag-stage"><span class="stage-num">4</span><span class="stage-name">Context Assembly + Generation</span></div>
+                    <div class="rag-output">
+                        ⚠️ HIGH RISK: 48-72hr port delays. 3 sources, 87% confidence. Activate alternate routes.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature 4: Route + Decision -->
+        <section class="feature-section scroll-section" id="route-section">
+            <div class="feature-visual">
+                <div class="mock-route">
+                    <div class="route-node node-start">Mumbai</div>
+                    <div class="route-line"></div>
+                    <div class="route-node">Pune</div>
+                    <div class="route-line"></div>
+                    <div class="route-node">Hyderabad</div>
+                    <div class="route-line line-long"></div>
+                    <div class="route-node node-end">Kolkata</div>
+                </div>
+            </div>
+            <div class="feature-content">
+                <div class="feature-badge badge-cyan">🗺️ Route Optimization + 🧠 Decision Engine</div>
+                <h2 class="feature-title">Smart Routes & AI Decisions</h2>
+                <p class="feature-description">
+                    Dijkstra's algorithm finds optimal routes across 10 warehouses while the
+                    Decision Engine combines all AI insights to generate prioritized actions —
+                    supplier switches, route changes, and inventory adjustments — with RAG-backed justifications.
+                </p>
+                <div class="feature-highlights">
+                    <div class="highlight"><span class="h-icon">🛣️</span> 34 Route Segments</div>
+                    <div class="highlight"><span class="h-icon">⚡</span> Real-time Updates</div>
+                    <div class="highlight"><span class="h-icon">🧠</span> AI Justifications</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section scroll-section" id="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Optimize Your Supply Chain?</h2>
+                <p class="cta-description">Launch the interactive dashboard to see AI in action.</p>
+                <button class="btn-launch" onclick="enterDashboard()" id="btn-enter-dashboard">
+                    <span class="launch-icon">🚀</span>
+                    Launch AI Dashboard
+                </button>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">scikit-learn</span>
+                    <span class="tech-tag">Chart.js</span>
+                    <span class="tech-tag">Leaflet.js</span>
+                    <span class="tech-tag">SQLite</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--                 DASHBOARD (hidden initially)           -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <div id="dashboard-page" class="dashboard-page" style="display:none;">
+
+        <!-- Header -->
+        <header id="main-header" class="header">
+            <div class="header-left">
+                <button class="btn btn-back" onclick="exitDashboard()" title="Back to Home">←</button>
+                <div class="logo">
+                    <span class="logo-icon">⚡</span>
+                    <div>
+                        <h1 class="logo-title">SupplyChain AI</h1>
+                        <p class="logo-subtitle">Smart Risk Predictor & Optimizer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="header-center">
+                <div class="status-indicators">
+                    <div class="status-pill" id="status-demand"><span class="status-dot"></span><span>Demand AI</span></div>
+                    <div class="status-pill" id="status-cluster"><span class="status-dot"></span><span>Clustering</span></div>
+                    <div class="status-pill" id="status-route"><span class="status-dot"></span><span>Routes</span></div>
+                    <div class="status-pill" id="status-rag"><span class="status-dot"></span><span>RAG Engine</span></div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="risk-badge" id="overall-risk-badge">
+                    <span class="risk-label">Overall Risk</span>
+                    <span class="risk-value" id="overall-risk-value">--</span>
+                </div>
+                <button class="btn btn-refresh" id="btn-refresh" onclick="loadDashboard()" title="Refresh">🔄</button>
+            </div>
+        </header>
+
+        <!-- Simulation Bar -->
+        <!-- Demo Progress Bar -->
+        <div id="demo-progress" class="demo-progress hidden">
+            <div class="demo-steps">
+                <div class="demo-step" id="demo-step-1"><span class="step-dot"></span><span class="step-name">Demand Prediction</span></div>
+                <div class="demo-step" id="demo-step-2"><span class="step-dot"></span><span class="step-name">Risk + RAG</span></div>
+                <div class="demo-step" id="demo-step-3"><span class="step-dot"></span><span class="step-name">Route Optimization</span></div>
+                <div class="demo-step" id="demo-step-4"><span class="step-dot"></span><span class="step-name">AI Decisions</span></div>
+            </div>
+        </div>
+
+        <section id="simulation-bar" class="simulation-bar">
+            <button class="btn btn-demo" onclick="runQuickDemo()" id="btn-quick-demo">🎯 Quick Demo</button>
+            <div class="sim-divider"></div>
+            <div class="sim-label"><span class="sim-icon">🎮</span><span>Simulate:</span></div>
+            <div class="sim-buttons">
+                <button class="btn btn-sim btn-storm" onclick="simulateDisruption('storm','Mumbai')" id="sim-storm">🌧️ Storm</button>
+                <button class="btn btn-sim btn-strike" onclick="simulateDisruption('strike','Delhi')" id="sim-strike">✊ Strike</button>
+                <button class="btn btn-sim btn-earthquake" onclick="simulateDisruption('earthquake','Guwahati')" id="sim-earthquake">🌍 Earthquake</button>
+                <button class="btn btn-sim btn-supplier" onclick="simulateDisruption('supplier','Kanpur')" id="sim-supplier">🏭 Supplier Fail</button>
+                <button class="btn btn-sim btn-demand" onclick="simulateDisruption('demand_spike','National')" id="sim-demand">📈 Demand Spike</button>
+                <button class="btn btn-sim btn-pandemic" onclick="simulateDisruption('pandemic','National')" id="sim-pandemic">🦠 Pandemic</button>
+            </div>
+            <div class="sim-route-selector">
+                <label>Route:</label>
+                <select id="route-source" class="sim-select">
+                    <option value="1">Mumbai</option><option value="2">Delhi</option><option value="3">Bangalore</option>
+                    <option value="4">Chennai</option><option value="5">Kolkata</option><option value="6">Hyderabad</option>
+                    <option value="7">Ahmedabad</option><option value="8">Pune</option><option value="9">Jaipur</option>
+                    <option value="10">Lucknow</option>
+                </select>
+                <span class="route-arrow">→</span>
+                <select id="route-dest" class="sim-select">
+                    <option value="5">Kolkata</option><option value="1">Mumbai</option><option value="2">Delhi</option>
+                    <option value="3">Bangalore</option><option value="4">Chennai</option><option value="6">Hyderabad</option>
+                    <option value="7">Ahmedabad</option><option value="8">Pune</option><option value="9">Jaipur</option>
+                    <option value="10">Lucknow</option>
+                </select>
+                <button class="btn btn-route" onclick="optimizeRoute()">🗺️ Optimize</button>
+            </div>
+        </section>
+
+        <!-- Main Dashboard -->
+        <main id="dashboard" class="dashboard">
+            <!-- Metrics Row -->
+            <section class="metrics-row" id="metrics-row">
+                <div class="metric-card" id="metric-risk"><div class="metric-icon">🛡️</div><div class="metric-info"><span class="metric-value" id="metric-risk-value">--</span><span class="metric-label">Risk Score</span></div><div class="metric-trend" id="metric-risk-trend">-</div></div>
+                <div class="metric-card" id="metric-demand"><div class="metric-icon">📊</div><div class="metric-info"><span class="metric-value" id="metric-demand-value">--</span><span class="metric-label">Avg Demand/Day</span></div><div class="metric-trend" id="metric-demand-trend">-</div></div>
+                <div class="metric-card" id="metric-suppliers"><div class="metric-icon">🏭</div><div class="metric-info"><span class="metric-value" id="metric-suppliers-value">--</span><span class="metric-label">Active Suppliers</span></div><div class="metric-trend" id="metric-suppliers-trend">-</div></div>
+                <div class="metric-card" id="metric-route"><div class="metric-icon">🛣️</div><div class="metric-info"><span class="metric-value" id="metric-route-value">--</span><span class="metric-label">Optimal Route (km)</span></div><div class="metric-trend" id="metric-route-trend">-</div></div>
+                <div class="metric-card" id="metric-alerts"><div class="metric-icon">⚠️</div><div class="metric-info"><span class="metric-value" id="metric-alerts-value">0</span><span class="metric-label">Active Alerts</span></div><div class="metric-trend" id="metric-alerts-trend">-</div></div>
+            </section>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- Demand Forecast -->
+                <section class="panel panel-demand" id="demand-panel">
+                    <div class="panel-header"><div class="panel-title"><span class="panel-icon">📈</span><h2>Demand Forecast</h2><span class="ai-badge">Supervised Learning</span></div></div>
+                    <div class="panel-body"><canvas id="demand-chart" width="600" height="280"></canvas></div>
+                    <div class="panel-footer"><div class="model-metrics"><span class="metric-tag">R² Score: <strong id="demand-r2">--</strong></span><span class="metric-tag">MAE: <strong id="demand-mae">--</strong></span><span class="metric-tag">Samples: <strong id="demand-samples">--</strong></span></div></div>
+                </section>
+
+                <!-- Supplier Clusters -->
+                <section class="panel panel-cluster" id="cluster-panel">
+                    <div class="panel-header"><div class="panel-title"><span class="panel-icon">🏭</span><h2>Supplier Risk Clusters</h2><span class="ai-badge ai-badge-unsupervised">Unsupervised Learning</span></div></div>
+                    <div class="panel-body panel-body-split"><div class="chart-container"><canvas id="cluster-chart" width="350" height="260"></canvas></div><div class="cluster-legend" id="cluster-legend"></div></div>
+                    <div class="panel-footer"><div class="model-metrics"><span class="metric-tag">Silhouette: <strong id="cluster-silhouette">--</strong></span><span class="metric-tag">Clusters: <strong id="cluster-count">3</strong></span></div></div>
+                </section>
+
+                <!-- Route Map -->
+                <section class="panel panel-map" id="map-panel">
+                    <div class="panel-header"><div class="panel-title"><span class="panel-icon">🗺️</span><h2>Route Optimization</h2><span class="ai-badge ai-badge-algo">Dijkstra's Algorithm</span></div></div>
+                    <div class="panel-body panel-body-map"><div id="route-map" class="route-map"></div></div>
+                    <div class="panel-footer"><div class="route-info"><span class="metric-tag">Distance: <strong id="route-distance">--</strong></span><span class="metric-tag">Time: <strong id="route-time">--</strong></span><span class="metric-tag">Cost: <strong id="route-cost">--</strong></span><span class="metric-tag">Stops: <strong id="route-stops">--</strong></span></div></div>
+                </section>
+
+                <!-- Risk Alerts -->
+                <section class="panel panel-alerts" id="alerts-panel">
+                    <div class="panel-header"><div class="panel-title"><span class="panel-icon">🚨</span><h2>Risk Alerts & RAG Intelligence</h2><span class="ai-badge ai-badge-rag">RAG Powered</span></div></div>
+                    <div class="panel-body panel-body-scroll" id="alerts-container">
+                        <div class="alert-card alert-info" id="alert-placeholder"><div class="alert-header"><span class="alert-icon">ℹ️</span><span class="alert-title">System Ready</span></div><p class="alert-message">Click a simulation button to trigger disruption analysis. The RAG engine will retrieve relevant intelligence and generate smart alerts.</p></div>
+                    </div>
+                </section>
+
+                <!-- Risk Chart -->
+                <section class="panel panel-risk-breakdown" id="risk-panel">
+                    <div class="panel-header"><div class="panel-title"><span class="panel-icon">📊</span><h2>Risk Factor Analysis</h2></div></div>
+                    <div class="panel-body"><canvas id="risk-chart" width="400" height="260"></canvas></div>
+                </section>
+
+                <!-- Decision Engine -->
+                <section class="panel panel-decisions" id="decisions-panel">
+                    <div class="panel-header"><div class="panel-title"><span class="panel-icon">🧠</span><h2>AI Decision Engine</h2><span class="ai-badge ai-badge-decision">AI + RAG</span></div></div>
+                    <div class="panel-body panel-body-scroll" id="decisions-container">
+                        <div class="decision-card decision-info"><div class="decision-header"><span class="decision-icon">📋</span><h3 class="decision-title">Awaiting Analysis</h3><span class="decision-priority priority-low">standby</span></div><p class="decision-description">Run a simulation to activate the AI Decision Engine.</p></div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <span>⚡ AI-Powered Supply Chain Risk Predictor & Optimizer</span>
+                <span class="footer-divider">|</span>
+                <span>Supervised Learning · Unsupervised Learning · RAG Intelligence</span>
+                <span class="footer-divider">|</span>
+                <span id="footer-timestamp">--</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Initializing AI Systems...</p>
+            <p class="loading-sub" id="loading-sub-text">Connecting to backend</p>
+        </div>
+    </div>
+
+    <!-- Offline Banner -->
+    <div id="offline-banner" class="offline-banner hidden">
+        <span>⚠️ You are offline. Some features may be unavailable.</span>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
