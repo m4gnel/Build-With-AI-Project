@@ -53,7 +53,7 @@ _(Simulating a localized supply chain disruption and its downstream effects)._
 
 ## Demo Video
 
-[Watch Demo](#) _(Insert Google Drive link here)_
+[Watch Demo](#) __
 
 ---
 
